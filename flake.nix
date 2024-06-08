@@ -57,7 +57,7 @@
           dontUnpack = true;
           buildInputs = [
             pkgs.berkeley
-            pkgs.agave
+            # pkgs.agave
           ];
           installPhase = ''
             mkdir -p $out/share/fonts/opentype
