@@ -32,20 +32,20 @@
             '';
           };
 
-          # agave = prev.stdenvNoCC.mkDerivation {
-          #   pname = "agave-font";
-          #   version = "3.2.1";
-          #   src = pkgs.fetchzip {
-          #     url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Agave.zip";
-          #     sha256 = "sha256-9Q+pkG/DteCnoPNzEPo1sNsJYNcT/3dyjhy/tIQBRG8=";
-          #     stripRoot = false;
-          #   };
-          #   dontConfigure = true;
-          #   installPhase = ''
-          #     mkdir -p $out/share/fonts/opentype
-          #     cp -R $src/*.ttf $out/share/fonts/opentype/
-          #   '';
-          # };
+          agave = prev.stdenvNoCC.mkDerivation {
+            pname = "agave-font";
+            version = "3.2.1";
+            src = pkgs.fetchzip {
+              url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Agave.zip";
+              sha256 = "sha256-9Q+pkG/DteCnoPNzEPo1sNsJYNcT/3dyjhy/tIQBRG8=";
+              stripRoot = false;
+            };
+            dontConfigure = true;
+            installPhase = ''
+              mkdir -p $out/share/fonts/opentype
+              cp -R $src/*.ttf $out/share/fonts/opentype/
+            '';
+          };
         })
       ];
     };
@@ -57,12 +57,12 @@
           dontUnpack = true;
           buildInputs = [
             pkgs.berkeley
-            # pkgs.agave
+            pkgs.agave
           ];
           installPhase = ''
             mkdir -p $out/share/fonts/opentype
             cp -R ${pkgs.berkeley}/share/fonts/opentype/*.otf $out/share/fonts/opentype/
-            # cp -R ${pkgs.agave}/share/fonts/opentype/*.ttf $out/share/fonts/opentype/
+            cp -R ${pkgs.agave}/share/fonts/opentype/*.ttf $out/share/fonts/opentype/
           '';
         };
       };
@@ -79,7 +79,7 @@
           }: {
             environment.systemPackages = [
               pkgs.berkeley
-              # pkgs.agave
+              pkgs.agave
             ];
           })
         ];
