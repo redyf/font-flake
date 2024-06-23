@@ -1,89 +1,40 @@
 {
-  description = "A flake for installing fonts";
+  description = "A flake for packaging fonts";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    berkeley = {
-      url = "git+ssh://git@github.com/redyf/berkeley.git";
-      flake = false;
-    };
+    nixpkgs.url = "github:NixOS/nixpkgs";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
     self,
     nixpkgs,
-    berkeley,
-  }: let
-    pkgs = import nixpkgs {
-      system = "x86_64-linux";
-      config = {
-        allowUnfree = true;
-      };
-      overlays = [
-        (final: prev: {
-          berkeley = prev.stdenvNoCC.mkDerivation {
-            pname = "berkeley-mono";
-            version = "dev";
-            src = berkeley;
-            dontConfigure = true;
-            installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              cp -R $src/*.otf $out/share/fonts/opentype/
-            '';
-          };
-
-          agave = prev.stdenvNoCC.mkDerivation {
-            pname = "agave-font";
-            version = "3.2.1";
-            src = pkgs.fetchzip {
-              url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/Agave.zip";
-              sha256 = "sha256-9Q+pkG/DteCnoPNzEPo1sNsJYNcT/3dyjhy/tIQBRG8=";
-              stripRoot = false;
+    flake-utils,
+  }:
+    flake-utils.lib.eachDefaultSystem (
+      system: let
+        pkgs = import nixpkgs {inherit system;};
+      in {
+        packages = {
+          my-font = pkgs.stdenv.mkDerivation {
+            pname = "my-font";
+            version = "1.0";
+            src = pkgs.fetchurl {
+              url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/IBMPlexMono.zip";
+              sha256 = "06j6aj1d8vhvmdkbbc79m16cskkay240bzf2bx8g9jkarcmj6v0d";
             };
-            dontConfigure = true;
+            buildInputs = [pkgs.unzip];
+            unpackPhase = ''
+              unzip -j $src
+            '';
             installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              cp -R $src/*.ttf $out/share/fonts/opentype/
+              mkdir -p $out/share/fonts/truetype
+              mv *.ttf $out/share/fonts/truetype/
             '';
           };
-        })
-      ];
-    };
-  in {
-    packages = {
-      x86_64-linux = {
-        fonts = pkgs.stdenv.mkDerivation {
-          name = "fonts";
-          dontUnpack = true;
-          buildInputs = [
-            pkgs.berkeley
-            pkgs.agave
-          ];
-          installPhase = ''
-            mkdir -p $out/share/fonts/opentype
-            cp -R ${pkgs.berkeley}/share/fonts/opentype/*.otf $out/share/fonts/opentype/
-            cp -R ${pkgs.agave}/share/fonts/opentype/*.ttf $out/share/fonts/opentype/
-          '';
         };
-      };
-    };
 
-    nixosConfigurations = {
-      redyf = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ({
-            config,
-            pkgs,
-            ...
-          }: {
-            environment.systemPackages = [
-              pkgs.berkeley
-              pkgs.agave
-            ];
-          })
-        ];
-      };
-    };
-  };
+        defaultPackage = self.packages.${system}.my-font;
+      }
+    );
 }
