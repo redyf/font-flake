@@ -3,6 +3,8 @@
     <img src="https://camo.githubusercontent.com/6c587786c40763574c1a811ef06e3c7aa93f0daacec04b672e12243c4b066847/68747470733a2f2f6275696c74776974686e69782e6f72672f62616467652e737667"/>
 </div>
 
+<hr>
+
 This repository contains a Nix flake for packaging custom fonts, (`IBMPlexMono` and `CascadiaCode` were provided as examples) making it easy to include them in your NixOS or Home Manager setup.
 
 ## Features
