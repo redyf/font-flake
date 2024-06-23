@@ -20,7 +20,7 @@ This repository contains a Nix flake for packaging custom fonts, (`IBMPlexMono` 
    {
      inputs = {
        nixpkgs.url = "github:NixOS/nixpkgs";
-       font-flake.url = "github:your-username/your-repo";
+       font-flake.url = "github:redyf/font-flake";
      };
    }
    ```
@@ -39,7 +39,7 @@ This repository contains a Nix flake for packaging custom fonts, (`IBMPlexMono` 
 1. **Default Package**: To build or install the default package (`IBMPlexMono`), you can run:
 
    ```sh
-   nix build "github:your-username/your-repo"
+   nix build "github:redyf/font-flake"
    ```
 
 ## Customization
