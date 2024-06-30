@@ -49,6 +49,21 @@
               mv *.ttf $out/share/fonts/truetype/
             '';
           };
+
+          sf-mono = pkgs.stdenv.mkDerivation {
+            pname = "SFMono-Nerd-Font-Ligaturized";
+            version = "1.0";
+            src = pkgs.fetchFromGitHub {
+              owner = "shaunsingh";
+              repo = "SFMono-Nerd-Font-Ligaturized";
+              rev = "dc5a3e6fcc2e16ad476b7be3c3c17c2273b260ea";
+              hash = "sha256-AYjKrVLISsJWXN6Cj74wXmbJtREkFDYOCRw1t2nVH2w=";
+            };
+            installPhase = ''
+              mkdir -p $out/share/fonts/opentype
+              find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
+            '';
+          };
         };
 
         defaultPackage = self.packages.${system}.my-font1;
