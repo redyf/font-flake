@@ -16,24 +16,7 @@
         pkgs = import nixpkgs {inherit system;};
       in {
         packages = {
-          my-font1 = pkgs.stdenv.mkDerivation {
-            pname = "my-font1";
-            version = "1.0";
-            src = pkgs.fetchurl {
-              url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/IBMPlexMono.zip";
-              sha256 = "06j6aj1d8vhvmdkbbc79m16cskkay240bzf2bx8g9jkarcmj6v0d";
-            };
-            buildInputs = [pkgs.unzip];
-            unpackPhase = ''
-              unzip -j $src
-            '';
-            installPhase = ''
-              mkdir -p $out/share/fonts/truetype
-              mv *.ttf $out/share/fonts/truetype/
-            '';
-          };
-
-          my-font2 = pkgs.stdenv.mkDerivation {
+          cascadia-code = pkgs.stdenv.mkDerivation {
             pname = "my-font2";
             version = "1.0";
             src = pkgs.fetchurl {
@@ -62,6 +45,21 @@
             installPhase = ''
               mkdir -p $out/share/fonts/opentype
               find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
+            '';
+          };
+
+          ubuntu-mono-ligaturized = pkgs.stdenv.mkDerivation {
+            pname = "UbuntuMono-Ligaturized";
+            version = "1.0";
+            src = pkgs.fetchFromGitHub {
+              owner = "redyf";
+              repo = "ubuntumono-ligaturized";
+              rev = "129df21a89511d9c2c22ec49301e67eb6a794412";
+              hash = "sha256-wYowJv/5jkr+PsVHy70WLNDrEwDbY6p5KFCkGzn3r3o=";
+            };
+            installPhase = ''
+              mkdir -p $out/share/fonts/truetype
+              mv *.ttf $out/share/fonts/truetype/
             '';
           };
         };
