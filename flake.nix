@@ -4,12 +4,24 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
+    # git+ssh://git@git.example.com/User/repo.git if you're using private repos
+    berkeley = {
+      url = "git+ssh://git@github.com/redyf/berkeley.git";
+      flake = false;
+    };
+
+    monolisa = {
+      url = "git+ssh://git@github.com/redyf/monolisa.git";
+      flake = false;
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     flake-utils,
+    berkeley,
+    monolisa,
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
@@ -48,15 +60,20 @@
             '';
           };
 
-          ubuntu-mono-ligaturized = pkgs.stdenv.mkDerivation {
-            pname = "UbuntuMono-Ligaturized";
+          berkeley = pkgs.stdenv.mkDerivation {
+            pname = "Berkeley Mono Nerd Font";
             version = "1.0";
-            src = pkgs.fetchFromGitHub {
-              owner = "redyf";
-              repo = "ubuntumono-ligaturized";
-              rev = "129df21a89511d9c2c22ec49301e67eb6a794412";
-              hash = "sha256-wYowJv/5jkr+PsVHy70WLNDrEwDbY6p5KFCkGzn3r3o=";
-            };
+            src = berkeley;
+            installPhase = ''
+              mkdir -p $out/share/fonts/opentype
+              find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
+            '';
+          };
+
+          monolisa = pkgs.stdenv.mkDerivation {
+            pname = "Monolisa";
+            version = "1.0";
+            src = monolisa;
             installPhase = ''
               mkdir -p $out/share/fonts/truetype
               mv *.ttf $out/share/fonts/truetype/
@@ -64,7 +81,7 @@
           };
         };
 
-        defaultPackage = self.packages.${system}.my-font1;
+        defaultPackage = self.packages.${system}.sf-mono;
       }
     );
 }
