@@ -28,12 +28,12 @@
         pkgs = import nixpkgs {inherit system;};
       in {
         packages = {
-          cascadia-code = pkgs.stdenv.mkDerivation {
-            pname = "my-font2";
-            version = "1.0";
+          lilex = pkgs.stdenv.mkDerivation {
+            pname = "lilex";
+            version = "2.530";
             src = pkgs.fetchurl {
-              url = "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/CascadiaCode.zip";
-              sha256 = "0n1n7w35xp309cw1b10hzq4sxd3jlzzccs5rhr2x2044bi635kjq";
+              url = "https://github.com/mishamyrt/Lilex/releases/download/2.530/Lilex.zip";
+              sha256 = "sha256-sBn8DaXj7OXHNaoEAhjTuMmUVUbS0zNZi1h7EjembEo=";
             };
             buildInputs = [pkgs.unzip];
             unpackPhase = ''
