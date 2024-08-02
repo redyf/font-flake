@@ -16,17 +16,20 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-    berkeley,
-    monolisa,
-  }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      berkeley,
+      monolisa,
+    }:
     flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {inherit system;};
-      in {
+      system:
+      let
+        pkgs = import nixpkgs { inherit system; };
+      in
+      {
         packages = {
           lilex = pkgs.stdenv.mkDerivation {
             pname = "lilex";
@@ -35,7 +38,7 @@
               url = "https://github.com/mishamyrt/Lilex/releases/download/2.530/Lilex.zip";
               sha256 = "sha256-sBn8DaXj7OXHNaoEAhjTuMmUVUbS0zNZi1h7EjembEo=";
             };
-            buildInputs = [pkgs.unzip];
+            buildInputs = [ pkgs.unzip ];
             unpackPhase = ''
               unzip -j $src
             '';
