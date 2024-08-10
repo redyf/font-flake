@@ -9,9 +9,12 @@
       url = "git+ssh://git@github.com/redyf/berkeley.git";
       flake = false;
     };
-
     monolisa = {
       url = "git+ssh://git@github.com/redyf/monolisa.git";
+      flake = false;
+    };
+    cartograph = {
+      url = "git+ssh://git@github.com/redyf/cartograph.git";
       flake = false;
     };
   };
@@ -23,6 +26,7 @@
       flake-utils,
       berkeley,
       monolisa,
+      cartograph,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -75,11 +79,21 @@
 
           monolisa = pkgs.stdenv.mkDerivation {
             pname = "Monolisa";
-            version = "1.0";
+            version = "2.012";
             src = monolisa;
             installPhase = ''
               mkdir -p $out/share/fonts/truetype
               mv *.ttf $out/share/fonts/truetype/
+            '';
+          };
+
+          cartograph = pkgs.stdenv.mkDerivation {
+            pname = "CartographCF";
+            version = "1.0";
+            src = cartograph;
+            installPhase = ''
+              mkdir -p $out/share/fonts/opentype
+              find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
             '';
           };
         };
