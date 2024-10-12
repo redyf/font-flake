@@ -16,6 +16,22 @@
         "url": "ssh://git@github.com/redyf/berkeley.git"
       }
     },
+    "cartograph": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1723304402,
+        "narHash": "sha256-/JvDN8l4wqUV1yk1CACDq8sZ96H9QfIlfeLI2lfyQMU=",
+        "ref": "refs/heads/main",
+        "rev": "86899aa09dcf18ff984aa8ff6d5cb5c35cc5dbb0",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/cartograph.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/cartograph.git"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -65,12 +81,26 @@
         "type": "github"
       }
     },
+    "pixelcode": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-ly3H3suSrkiIT9pNSgSv9YrJA7F48wmR79x1E5TvzKE=",
+        "type": "file",
+        "url": "https://github.com/qwerasd205/PixelCode"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/qwerasd205/PixelCode"
+      }
+    },
     "root": {
       "inputs": {
         "berkeley": "berkeley",
+        "cartograph": "cartograph",
         "flake-utils": "flake-utils",
         "monolisa": "monolisa",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "pixelcode": "pixelcode"
       }
     },
     "systems": {

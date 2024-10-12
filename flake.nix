@@ -17,6 +17,10 @@
       url = "git+ssh://git@github.com/redyf/cartograph.git";
       flake = false;
     };
+    pixelcode = {
+      url = "https://github.com/qwerasd205/PixelCode";
+      flake = false;
+    };
   };
 
   outputs =
@@ -27,6 +31,7 @@
       berkeley,
       monolisa,
       cartograph,
+      pixelcode,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -94,6 +99,23 @@
             installPhase = ''
               mkdir -p $out/share/fonts/opentype
               find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
+            '';
+          };
+
+          pixelcode = pkgs.stdenv.mkDerivation rec {
+            pname = "PixelCode";
+            version = "2.2";
+            src = pkgs.fetchurl {
+              url = "https://github.com/qwerasd205/${pname}/releases/download/v${version}/ttf.zip";
+              sha256 = "sha256-rj7sq976x0WOGeaTpZmMrPJyh9pYL9Mf5VVa3fbmY8s=";
+            };
+            buildInputs = [ pkgs.unzip ];
+            unpackPhase = ''
+              unzip -j $src
+            '';
+            installPhase = ''
+              mkdir -p $out/share/fonts/truetype
+              mv *.ttf $out/share/fonts/truetype/
             '';
           };
         };
