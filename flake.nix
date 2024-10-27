@@ -9,16 +9,16 @@
       url = "git+ssh://git@github.com/redyf/berkeley.git";
       flake = false;
     };
+    BerkeleyMono = {
+      url = "git+ssh://git@github.com/redyf/BerkeleyMono.git";
+      flake = false;
+    };
     monolisa = {
       url = "git+ssh://git@github.com/redyf/monolisa.git";
       flake = false;
     };
     cartograph = {
       url = "git+ssh://git@github.com/redyf/cartograph.git";
-      flake = false;
-    };
-    pixelcode = {
-      url = "https://github.com/qwerasd205/PixelCode";
       flake = false;
     };
   };
@@ -29,9 +29,9 @@
       nixpkgs,
       flake-utils,
       berkeley,
+      BerkeleyMono,
       monolisa,
       cartograph,
-      pixelcode,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -102,17 +102,10 @@
             '';
           };
 
-          pixelcode = pkgs.stdenv.mkDerivation rec {
-            pname = "PixelCode";
-            version = "2.2";
-            src = pkgs.fetchurl {
-              url = "https://github.com/qwerasd205/${pname}/releases/download/v${version}/ttf.zip";
-              sha256 = "sha256-rj7sq976x0WOGeaTpZmMrPJyh9pYL9Mf5VVa3fbmY8s=";
-            };
-            buildInputs = [ pkgs.unzip ];
-            unpackPhase = ''
-              unzip -j $src
-            '';
+          berkeleymono = pkgs.stdenv.mkDerivation rec {
+            pname = "BerkeleyMono";
+            version = "1.001";
+            src = BerkeleyMono;
             installPhase = ''
               mkdir -p $out/share/fonts/truetype
               mv *.ttf $out/share/fonts/truetype/
