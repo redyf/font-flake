@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "BerkeleyMono": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1730071755,
+        "narHash": "sha256-+ktwTMcFobrWezeAW9ix6OL1jQc4bzib9elAubqWJg8=",
+        "ref": "refs/heads/main",
+        "rev": "c91f0f30710b63e7ebb1bdbec881775aaf1b1e62",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/BerkeleyMono.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/BerkeleyMono.git"
+      }
+    },
     "berkeley": {
       "flake": false,
       "locked": {
@@ -81,26 +97,14 @@
         "type": "github"
       }
     },
-    "pixelcode": {
-      "flake": false,
-      "locked": {
-        "narHash": "sha256-ly3H3suSrkiIT9pNSgSv9YrJA7F48wmR79x1E5TvzKE=",
-        "type": "file",
-        "url": "https://github.com/qwerasd205/PixelCode"
-      },
-      "original": {
-        "type": "file",
-        "url": "https://github.com/qwerasd205/PixelCode"
-      }
-    },
     "root": {
       "inputs": {
+        "BerkeleyMono": "BerkeleyMono",
         "berkeley": "berkeley",
         "cartograph": "cartograph",
         "flake-utils": "flake-utils",
         "monolisa": "monolisa",
-        "nixpkgs": "nixpkgs",
-        "pixelcode": "pixelcode"
+        "nixpkgs": "nixpkgs"
       }
     },
     "systems": {

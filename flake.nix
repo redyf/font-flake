@@ -5,10 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
     # git+ssh://git@git.example.com/User/repo.git if you're using private repos
-    berkeley = {
-      url = "git+ssh://git@github.com/redyf/berkeley.git";
-      flake = false;
-    };
     BerkeleyMono = {
       url = "git+ssh://git@github.com/redyf/BerkeleyMono.git";
       flake = false;
@@ -28,7 +24,6 @@
       self,
       nixpkgs,
       flake-utils,
-      berkeley,
       BerkeleyMono,
       monolisa,
       cartograph,
@@ -72,16 +67,6 @@
             '';
           };
 
-          berkeley = pkgs.stdenv.mkDerivation {
-            pname = "Berkeley Mono Nerd Font";
-            version = "1.0";
-            src = berkeley;
-            installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
-            '';
-          };
-
           monolisa = pkgs.stdenv.mkDerivation {
             pname = "Monolisa";
             version = "2.012";
@@ -102,7 +87,7 @@
             '';
           };
 
-          berkeleymono = pkgs.stdenv.mkDerivation rec {
+          berkeley = pkgs.stdenv.mkDerivation rec {
             pname = "BerkeleyMono";
             version = "1.001";
             src = BerkeleyMono;
