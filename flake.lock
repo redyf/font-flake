@@ -3,11 +3,11 @@
     "BerkeleyMono": {
       "flake": false,
       "locked": {
-        "lastModified": 1747700312,
-        "narHash": "sha256-YoGzH4527I0chcIFoQSyuKyNOtTjjVXqFgrYfWzkMs4=",
+        "lastModified": 1747702973,
+        "narHash": "sha256-O0WGaI3ZahOlpdmSeaTcnbLReHackU5Hg4KTkKr0qoE=",
         "ref": "refs/heads/main",
-        "rev": "b6343d3a728b9f74df9534194be7477c55d7263e",
-        "revCount": 6,
+        "rev": "a16be67ead327d2299ebe71d9dd5440ed5afb678",
+        "revCount": 7,
         "type": "git",
         "url": "ssh://git@github.com/redyf/BerkeleyMono.git"
       },
