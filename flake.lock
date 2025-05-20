@@ -3,11 +3,11 @@
     "BerkeleyMono": {
       "flake": false,
       "locked": {
-        "lastModified": 1747699240,
-        "narHash": "sha256-VGaQl853up0lOE27UQgT00S4UFwTnh+daXAiYMbbQ08=",
+        "lastModified": 1747700312,
+        "narHash": "sha256-YoGzH4527I0chcIFoQSyuKyNOtTjjVXqFgrYfWzkMs4=",
         "ref": "refs/heads/main",
-        "rev": "3d405728892502d74ac4f52c7a02fe8e48aac068",
-        "revCount": 4,
+        "rev": "b6343d3a728b9f74df9534194be7477c55d7263e",
+        "revCount": 6,
         "type": "git",
         "url": "ssh://git@github.com/redyf/BerkeleyMono.git"
       },
@@ -68,11 +68,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1747698977,
-        "narHash": "sha256-eO3xC7gtg3uyFpC3Kn77CnkQc3zMjKtazbqDlhsnHsE=",
+        "lastModified": 1747699997,
+        "narHash": "sha256-Us+99AQBnrHfdSBHLF6SgYDUiJhYNTncFXznqSdhlVI=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c10873a406682a3460a68de98344960be0c98eb2",
+        "rev": "5c68d925b545ab6daea44ba1295756bb2493c6af",
         "type": "github"
       },
       "original": {
