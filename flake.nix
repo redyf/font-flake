@@ -9,12 +9,16 @@
       url = "git+ssh://git@github.com/redyf/BerkeleyMono.git";
       flake = false;
     };
+    cartograph = {
+      url = "git+ssh://git@github.com/redyf/cartograph.git";
+      flake = false;
+    };
     monolisa = {
       url = "git+ssh://git@github.com/redyf/monolisa.git";
       flake = false;
     };
-    cartograph = {
-      url = "git+ssh://git@github.com/redyf/cartograph.git";
+    tx02 = {
+      url = "git+ssh://git@github.com/redyf/tx02.git";
       flake = false;
     };
   };
@@ -25,8 +29,9 @@
       nixpkgs,
       flake-utils,
       BerkeleyMono,
-      monolisa,
       cartograph,
+      monolisa,
+      tx02,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -35,11 +40,11 @@
       in
       {
         packages = {
-          lilex = pkgs.stdenv.mkDerivation {
+          lilex = pkgs.stdenv.mkDerivation rec {
             pname = "lilex";
             version = "2.600";
             src = pkgs.fetchurl {
-              url = "https://github.com/mishamyrt/Lilex/releases/download/2.600/Lilex.zip";
+              url = "https://github.com/mishamyrt/Lilex/releases/download/${version}/Lilex.zip";
               sha256 = "sha256-G8zm35aSiXrnGgYePSwLMBzwSnd9mfCinHZSG1qBH0w=";
             };
             buildInputs = [ pkgs.unzip ];
@@ -87,13 +92,23 @@
             '';
           };
 
-          berkeley = pkgs.stdenv.mkDerivation rec {
+          berkeley = pkgs.stdenv.mkDerivation {
             pname = "BerkeleyMono";
             version = "1.001";
             src = BerkeleyMono;
             installPhase = ''
               mkdir -p $out/share/fonts/truetype
               mv *.ttf $out/share/fonts/truetype/
+            '';
+          };
+
+          tx02 = pkgs.stdenv.mkDerivation {
+            pname = "TX-02";
+            version = "2.000";
+            src = tx02;
+            installPhase = ''
+              mkdir -p $out/share/fonts/opentype
+              find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
             '';
           };
         };

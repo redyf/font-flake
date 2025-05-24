@@ -87,7 +87,8 @@
         "cartograph": "cartograph",
         "flake-utils": "flake-utils",
         "monolisa": "monolisa",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "tx02": "tx02"
       }
     },
     "systems": {
@@ -103,6 +104,22 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
+      }
+    },
+    "tx02": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1748052604,
+        "narHash": "sha256-QEaoSLA3mEm0Q8hdxvHNESWcQeEe7LtWum4ivAeqDrM=",
+        "ref": "refs/heads/main",
+        "rev": "091a7e2090c34a7c6a790468ed44eba23fb69488",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/tx02.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/tx02.git"
       }
     }
   },
