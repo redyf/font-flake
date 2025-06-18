@@ -47,7 +47,6 @@ This repository contains a Nix flake for packaging custom fonts, (`IBMPlexMono` 
 ```bash
 To make fonts discoverable, add a development shell to your flake with `fontconfig` and a `shellHook` to configure the font directories.
 
-```nix
 {
   devShells.default = pkgs.mkShell {
     buildInputs = [
