@@ -114,6 +114,21 @@
         };
 
         defaultPackage = self.packages.${system}.sf-mono;
+
+        devShells.default = pkgs.mkShell {
+          buildInputs = [
+            pkgs.fontconfig
+            self.packages.${system}.monolisa
+          ];
+          shellHook = ''
+            # Create fontconfig configuration
+            export FONTCONFIG_FILE=${
+              pkgs.makeFontsConf {
+                fontDirectories = [ self.packages.${system}.monolisa ];
+              }
+            }
+          '';
+        };
       }
     );
 }

@@ -25,22 +25,43 @@ This repository contains a Nix flake for packaging custom fonts, (`IBMPlexMono` 
    }
    ```
 
-1. **Install Fonts**: Reference the font packages by name in your Home Manager configuration.
+2. **Install Fonts**: Reference the font packages by name in your Home Manager configuration.
 
    ```nix
    {
-     home.packages = with pkgs; [
-       inputs.font-flake.packages.${system}.my-font1
-       inputs.font-flake.packages.${system}.my-font2
+     home.packages = inputs.font-flake.packages.${system}; [
+       my-font1
+       my-font2
      ];
    }
    ```
 
-1. **Default Package**: To build or install the default package (`IBMPlexMono`), you can run:
+3. **Default Package**: To build or install the default package (`IBMPlexMono`), you can run:
 
    ```sh
    nix build "github:redyf/font-flake"
    ```
+
+4. **Making Fonts Discoverable with fontconfig**: Some systems may require additional configuration to make fonts available to tools like fc-list (e.g., fc-list | grep -i monolisa). You can set up fontconfig in a development shell as follows:
+
+```bash
+To make fonts discoverable, add a development shell to your flake with `fontconfig` and a `shellHook` to configure the font directories.
+
+```nix
+{
+  devShells.default = pkgs.mkShell {
+    buildInputs = [
+      pkgs.fontconfig
+      self.packages.${system}.monolisa
+    ];
+    shellHook = ''
+      export FONTCONFIG_FILE=${pkgs.makeFontsConf {
+        fontDirectories = [ self.packages.${system}.monolisa ];
+      }}
+    '';
+  };
+}
+```
 
 ## Customization
 
