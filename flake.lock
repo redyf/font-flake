@@ -16,6 +16,22 @@
         "url": "ssh://git@github.com/redyf/berkeley-mono.git"
       }
     },
+    "BerkeleyTrial": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1754759478,
+        "narHash": "sha256-7bgMTdfVuoAlrijJpQTvvMhHGZLxzdcag0zbzeVQSGo=",
+        "ref": "refs/heads/main",
+        "rev": "fdb06904d5dcb1c464292eff7a39b29e90be177b",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/tx-02-trial.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/tx-02-trial.git"
+      }
+    },
     "cartograph": {
       "flake": false,
       "locked": {
@@ -68,11 +84,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1754709859,
-        "narHash": "sha256-DXg6HFHnPWg9PCK4+CW2C+v+Hhi4HJTRHftzLfQcBjA=",
+        "lastModified": 1754754819,
+        "narHash": "sha256-1jgrehqxDSh2TBsRiFDYzlkJ+cNZQ9thApzvOTCdMBA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ae1b5a76f297596f63f204a5c67c37bb047b46cd",
+        "rev": "bcc20cad1608fbbe08641e5106c0755cfd0154ad",
         "type": "github"
       },
       "original": {
@@ -84,6 +100,7 @@
     "root": {
       "inputs": {
         "BerkeleyMono": "BerkeleyMono",
+        "BerkeleyTrial": "BerkeleyTrial",
         "cartograph": "cartograph",
         "flake-utils": "flake-utils",
         "monolisa": "monolisa",
