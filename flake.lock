@@ -19,11 +19,11 @@
     "BerkeleyTrial": {
       "flake": false,
       "locked": {
-        "lastModified": 1754759478,
-        "narHash": "sha256-7bgMTdfVuoAlrijJpQTvvMhHGZLxzdcag0zbzeVQSGo=",
+        "lastModified": 1754774231,
+        "narHash": "sha256-54T9ltjlam2ztk4pW9Wi8kcqmD1aarsBlSPZCFuvXj0=",
         "ref": "refs/heads/main",
-        "rev": "fdb06904d5dcb1c464292eff7a39b29e90be177b",
-        "revCount": 1,
+        "rev": "f6f8828e5825f0468011d52d442c525ebda70bbd",
+        "revCount": 2,
         "type": "git",
         "url": "ssh://git@github.com/redyf/tx-02-trial.git"
       },
