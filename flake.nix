@@ -6,9 +6,10 @@
     flake-utils.url = "github:numtide/flake-utils";
     # git+ssh://git@git.example.com/User/repo.git if you're using private repos
     BerkeleyMono = {
-      url = "git+ssh://git@github.com:redyf/berkeley-mono.git";
+      url = "git+ssh://git@github.com/redyf/berkeley-mono.git";
       flake = false;
     };
+
     cartograph = {
       url = "git+ssh://git@github.com/redyf/cartograph.git";
       flake = false;
@@ -92,13 +93,13 @@
             '';
           };
 
-          berkeley = pkgs.stdenv.mkDerivation {
+          berkeley-mono = pkgs.stdenv.mkDerivation {
             pname = "BerkeleyMono";
             version = "2.002";
             src = BerkeleyMono;
             installPhase = ''
-              mkdir -p $out/share/fonts/truetype
-              mv *.ttf $out/share/fonts/truetype/
+              mkdir -p $out/share/fonts/opentype
+              find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
             '';
           };
 

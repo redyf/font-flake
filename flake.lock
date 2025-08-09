@@ -3,17 +3,17 @@
     "BerkeleyMono": {
       "flake": false,
       "locked": {
-        "lastModified": 1754710034,
-        "narHash": "sha256-+ktwTMcFobrWezeAW9ix6OL1jQc4bzib9elAubqWJg8=",
+        "lastModified": 1754710852,
+        "narHash": "sha256-cH1EDVPm0RTnieWlKnq8FdrPo4KTECmiEJywFi6/pGU=",
         "ref": "refs/heads/main",
-        "rev": "6eb4f25cda33611ea2a1023707a2d46dba051a7b",
-        "revCount": 8,
+        "rev": "c7ca3c98edc5e9eaa2625f009f0f23d1b0c24fc2",
+        "revCount": 1,
         "type": "git",
-        "url": "ssh://git@github.com/redyf/BerkeleyMono.git"
+        "url": "ssh://git@github.com/redyf/berkeley-mono.git"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/redyf/BerkeleyMono.git"
+        "url": "ssh://git@github.com/redyf/berkeley-mono.git"
       }
     },
     "cartograph": {
