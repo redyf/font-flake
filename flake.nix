@@ -9,10 +9,6 @@
       url = "git+ssh://git@github.com/redyf/berkeley-mono.git";
       flake = false;
     };
-    BerkeleyTrial = {
-      url = "git+ssh://git@github.com/redyf/tx-02-trial.git";
-      flake = false;
-    };
     cartograph = {
       url = "git+ssh://git@github.com/redyf/cartograph.git";
       flake = false;
@@ -22,7 +18,7 @@
       flake = false;
     };
     tx02 = {
-      url = "git+ssh://git@github.com/redyf/tx02.git";
+      url = "git+ssh://git@github.com/redyf/tx-02-trial.git";
       flake = false;
     };
   };
@@ -33,7 +29,6 @@
       nixpkgs,
       flake-utils,
       BerkeleyMono,
-      BerkeleyTrial,
       cartograph,
       monolisa,
       tx02,
@@ -107,23 +102,13 @@
             '';
           };
 
-          berkeley-trial = pkgs.stdenv.mkDerivation {
-            pname = "BerkeleyMonoTrial";
+          tx02 = pkgs.stdenv.mkDerivation {
+            pname = "TX-02";
             version = "2.002";
-            src = BerkeleyTrial;
+            src = tx02;
             installPhase = ''
               mkdir -p $out/share/fonts/truetype
               mv *.ttf $out/share/fonts/truetype/
-            '';
-          };
-
-          tx02 = pkgs.stdenv.mkDerivation {
-            pname = "TX-02";
-            version = "2.000";
-            src = tx02;
-            installPhase = ''
-              mkdir -p $out/share/fonts/opentype
-              find $src -type f -name '*.otf' -exec cp {} $out/share/fonts/opentype/ \;
             '';
           };
         };

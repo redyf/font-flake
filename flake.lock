@@ -16,22 +16,6 @@
         "url": "ssh://git@github.com/redyf/berkeley-mono.git"
       }
     },
-    "BerkeleyTrial": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1754774231,
-        "narHash": "sha256-54T9ltjlam2ztk4pW9Wi8kcqmD1aarsBlSPZCFuvXj0=",
-        "ref": "refs/heads/main",
-        "rev": "f6f8828e5825f0468011d52d442c525ebda70bbd",
-        "revCount": 2,
-        "type": "git",
-        "url": "ssh://git@github.com/redyf/tx-02-trial.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@github.com/redyf/tx-02-trial.git"
-      }
-    },
     "cartograph": {
       "flake": false,
       "locked": {
@@ -100,7 +84,6 @@
     "root": {
       "inputs": {
         "BerkeleyMono": "BerkeleyMono",
-        "BerkeleyTrial": "BerkeleyTrial",
         "cartograph": "cartograph",
         "flake-utils": "flake-utils",
         "monolisa": "monolisa",
@@ -126,17 +109,17 @@
     "tx02": {
       "flake": false,
       "locked": {
-        "lastModified": 1754709914,
-        "narHash": "sha256-3NtxMAc6eWFBWApfV9vidKOoS3vOfKY7woiHIw318Ww=",
+        "lastModified": 1754861062,
+        "narHash": "sha256-0FKwc21OhztUo25DngEAUrF+hWovSnMo2gXc7eNFZnM=",
         "ref": "refs/heads/main",
-        "rev": "0b2bd3cc119a1cf87fcb43313c0e77fea03c2271",
-        "revCount": 2,
+        "rev": "2be7d179b5e4e07feba73ea398e5604ba70d9170",
+        "revCount": 3,
         "type": "git",
-        "url": "ssh://git@github.com/redyf/tx02.git"
+        "url": "ssh://git@github.com/redyf/tx-02-trial.git"
       },
       "original": {
         "type": "git",
-        "url": "ssh://git@github.com/redyf/tx02.git"
+        "url": "ssh://git@github.com/redyf/tx-02-trial.git"
       }
     }
   },
