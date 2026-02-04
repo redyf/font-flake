@@ -118,7 +118,7 @@
           };
 
           maple = pkgs.stdenv.mkDerivation {
-            pname = "MapleMonoDebugRegular";
+            pname = "Maple-Mono-Debug-Regular";
             version = "7.700";
             src = maple;
             installPhase = ''
