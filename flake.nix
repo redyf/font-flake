@@ -21,7 +21,7 @@
       url = "git+ssh://git@github.com/redyf/tx-02-trial.git";
       flake = false;
     };
-    maple-font = {
+    maple = {
       url = "git+ssh://git@github.com/redyf/maple-font-brackets.git";
       flake = false;
     };
@@ -36,7 +36,7 @@
       cartograph,
       monolisa,
       tx02,
-      maple-font,
+      maple,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -118,9 +118,9 @@
           };
 
           maple = pkgs.stdenv.mkDerivation {
-            pname = "Maple Mono Debug Regular";
+            pname = "MapleMonoDebugRegular";
             version = "7.700";
-            src = maple-font;
+            src = maple;
             installPhase = ''
               mkdir -p $out/share/fonts/truetype
               mv *.ttf $out/share/fonts/truetype/
