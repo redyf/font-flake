@@ -50,6 +50,22 @@
         "type": "github"
       }
     },
+    "maple-font": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1770227539,
+        "narHash": "sha256-XZrpqRRF3AM62IOcC/+K6UrWROplmMjJbXkhE61ackg=",
+        "ref": "refs/heads/main",
+        "rev": "23a6ed3c6369358bbb252e9cf93d6d4a62975a80",
+        "revCount": 1,
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/maple-font-brackets.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "ssh://git@github.com/redyf/maple-font-brackets.git"
+      }
+    },
     "monolisa": {
       "flake": false,
       "locked": {
@@ -86,6 +102,7 @@
         "BerkeleyMono": "BerkeleyMono",
         "cartograph": "cartograph",
         "flake-utils": "flake-utils",
+        "maple-font": "maple-font",
         "monolisa": "monolisa",
         "nixpkgs": "nixpkgs",
         "tx02": "tx02"
