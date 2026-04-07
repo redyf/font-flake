@@ -62,6 +62,23 @@
             '';
           };
 
+          ioskeley-mono = pkgs.stdenv.mkDerivation rec {
+            pname = "IoskeleyMono";
+            version = "2.0.0-beta.1";
+            src = pkgs.fetchurl {
+              url = "https://github.com/ahatem/IoskeleyMono/releases/download/v${version}/IoskeleyMono-NerdFont-Normal.zip";
+              sha256 = "sha256-c9zh4o/UnFL3nkssA1ETqGPnHbxcnLS2NYqFGd2h330=";
+            };
+            buildInputs = [ pkgs.unzip ];
+            unpackPhase = ''
+              unzip -j $src
+            '';
+            installPhase = ''
+              mkdir -p $out/share/fonts/truetype
+              mv *.ttf $out/share/fonts/truetype/
+            '';
+          };
+
           sf-mono = pkgs.stdenv.mkDerivation {
             pname = "SFMono-Nerd-Font-Ligaturized";
             version = "1.0";
@@ -126,6 +143,7 @@
               mv *.ttf $out/share/fonts/truetype/
             '';
           };
+
         };
 
         defaultPackage = self.packages.${system}.sf-mono;
